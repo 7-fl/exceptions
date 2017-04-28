@@ -60,7 +60,7 @@ I added a new clause to the bottom of the server's receive loop:
                     io:format("server (~w) got unknown request: ~w...discarding~n", [self(), Val]),
                     loop(Frequencies, Supervisor)
             end
-    end.
+    
 
 handle(Other) ->
     throw({unknown_request, Other}).

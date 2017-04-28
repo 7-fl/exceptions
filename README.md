@@ -50,6 +50,8 @@ I don't really see why killing the client would be necessary when the client tri
 
 ### Unknow Message exception handling:
 
+I added a new clause to the bottom of the server's loop:
+
 ```erlang
         Other ->
             try handle(Other)

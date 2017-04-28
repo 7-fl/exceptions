@@ -1,6 +1,19 @@
 ### Deallocation exception handling:
 
-I added a try-catch to the following clause in the server's receive loop:
+The funcion `lists:keysearch()` in the following code snippet:
+
+```erlang
+deallocate({Free, Allocated}, Freq) ->
+   {value,{Freq,Pid}} = lists:keysearch(Freq,1,Allocated)
+```
+will return false if the frequency is not found in the Allocated list, i.e. when the client tries to deallocate a frequency that it does not own.  That will cause a bad match error:
+
+```erlang
+deallocate({Free, Allocated}, Freq) ->
+   {value,{Freq,Pid}} = false   <<****BADMATCH****
+```
+
+To catch the badmatch error, I added a try-catch to the following clause in the server's receive loop:
 
 ```erlang
 

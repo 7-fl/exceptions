@@ -11,9 +11,9 @@ I added a try-catch to the following clause in the server's receive loop:
             Pid ! {reply, ok},
             loop(NewFrequencies, Supervisor);
  ```
- That doesn nothing if the client tries to deallocate a frequency that it does not own.  
+ That does nothing when the client tries to deallocate a frequency that it does not own.  
  
- Another approach is to send an error message to the client:
+ Another approach would be to send an error message to the client:
  
  ```
          {request, Pid , {deallocate, Freq}} -> 
@@ -27,9 +27,9 @@ I added a try-catch to the following clause in the server's receive loop:
                     loop(Frequencies, Supervisor)
             end;
 ``` 
-But, then as was mentioned in the lecture, the client has to add machinery to handle the error message, and that also presents the problem of what the client should do in response to an error message.
+But, then as was mentioned in the lecture, the client would have to add machinery to handle the error message, and that also presents the problem of what the client should do in response to an error message.
 
-I don't really see why killing the client is necessary when the client tries to deallocate a frequency it doesn't own, but another approach would be to kill the client:
+I don't really see why killing the client is necessary when the client tries to deallocate a frequency it doesn't own, but another approach would be for the server to kill the client:
  
 
 ```erlang

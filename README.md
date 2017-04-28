@@ -1,4 +1,4 @@
-## Deallocation exception handling:
+### Deallocation exception handling:
 
 I added a try-catch to the following clause in the server's receive loop:
 
@@ -47,3 +47,20 @@ I don't really see why killing the client would be necessary when the client tri
                     loop(Frequencies, Supervisor)
             end;
  ```
+
+### Unknow Message exception handling:
+
+```erlang
+        Other ->
+            try handle(Other)
+            catch
+                throw: {unknown_request, Val} -> 
+                    io:format("server (~w) got unknown request: ~w...discarding~n", [self(), Val]),
+                    loop(Frequencies, Supervisor)
+            end
+    end.
+
+handle(Other) ->
+    throw({unknown_request, Other}).
+    
+```

@@ -1,4 +1,4 @@
-I added a try-catch to the following clause in the server's receive loop:
+1. I added a try-catch to the following clause in the server's receive loop:
 
 ```erlang
 

@@ -66,3 +66,4 @@ handle(Other) ->
     throw({unknown_request, Other}).
     
 ```
+I felt that was a pretty contrived solution, and I couldn't think of any alternate approaches.

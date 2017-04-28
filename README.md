@@ -29,7 +29,7 @@ I added a try-catch to the following clause in the server's receive loop:
 ``` 
 But, then as was mentioned in the lecture, the client would have to add machinery to handle the error message, and that also presents the problem of what the client should do in response to an error message.
 
-I don't really see why killing the client is necessary when the client tries to deallocate a frequency it doesn't own, but another approach would be for the server to kill the client:
+I don't really see why killing the client would be necessary when the client tries to deallocate a frequency it doesn't own, but another approach would be for the server to kill the client:
  
 
 ```erlang

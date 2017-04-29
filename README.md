@@ -26,7 +26,7 @@ To catch the badmatch error, I added a try-catch to the following clause in the 
             Pid ! {reply, ok},
             loop(NewFrequencies, Supervisor);
  ```
- That does nothing when the client tries to deallocate a frequency that it does not own.  
+ In that version, the server does nothing when the client tries to deallocate a frequency that it does not own.  
  
  Another approach would be to send an error message to the client:
  
